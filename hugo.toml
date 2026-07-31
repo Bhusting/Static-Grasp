@@ -1,12 +1,9 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://static-grasp.pages.dev/'
 languageCode = 'en-us'
-title = 'Grasp App'
-theme = ["reveal-hugo"]
+title = 'Grasp — The e-reader that makes reading stick'
+
+# The site is plain static HTML served from static/ (copied verbatim into
+# public/ by `hugo`). No theme or content pages are used.
 
 [markup.goldmark.renderer]
 unsafe = true
-
-[outputFormats.Reveal]
-baseName = "index"
-mediaType = "text/html"
-isHTML = true
