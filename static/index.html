@@ -3,11 +3,16 @@
 <head>
 <meta charset="utf-8">
 <script>
-  // Legacy hash routes: /#/2 = Privacy Policy, /#/3 = Terms of Use.
+  // Legacy hash routes from the old reveal.js deck: /#/2 = Privacy Policy,
+  // /#/3 = Terms of Use. Both were vertical slide stacks, so live links can
+  // also carry a sub-slide index (/#/2/0, /#/3/11) -- match those too.
+  // A fragment is never sent to the server, so this cannot be done with a
+  // Cloudflare _redirects rule; it has to happen here.
   (function () {
+    var routes = { "2": "privacy.html", "3": "terms.html" };
     function routeHash() {
-      if (location.hash === "#/2" || location.hash === "#/2/") location.replace("privacy.html");
-      else if (location.hash === "#/3" || location.hash === "#/3/") location.replace("terms.html");
+      var m = /^#\/(\d+)(?:\/\d*)*\/?$/.exec(location.hash);
+      if (m && routes[m[1]]) location.replace(routes[m[1]]);
     }
     routeHash();
     window.addEventListener("hashchange", routeHash);
