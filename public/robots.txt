@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://static-grasp.pages.dev/sitemap.xml

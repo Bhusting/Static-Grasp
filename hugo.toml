@@ -4,6 +4,9 @@ title = 'Grasp — The e-reader that makes reading stick'
 
 # The site is plain static HTML served from static/ (copied verbatim into
 # public/ by `hugo`). No theme or content pages are used.
-
-[markup.goldmark.renderer]
-unsafe = true
+#
+# Hugo's own sitemap/RSS/taxonomy output is disabled so the hand-written
+# static/sitemap.xml is the one that ships (otherwise the two collide in
+# public/ and the winner depends on copy order), and no empty feeds are
+# emitted. Do not add "home" here: it panics Hugo 0.147.x.
+disableKinds = ["taxonomy", "term", "RSS", "sitemap"]
